@@ -1,5 +1,24 @@
 public class OtherProfessional extends HealthProfessional {
-    // TODO: 添加额外属性 (specialty / equipment)
-    // TODO: 构造方法（默认 + 全参）
-    // TODO: 覆写 printDetails() 打印类型和信息
+    private String specialty;
+    private String equipmentNotes;
+
+    public OtherProfessional() {
+        super();
+        this.specialty = "Unknown";
+        this.equipmentNotes = "None";
+    }
+
+    public OtherProfessional(int id, String name, String department, String specialty, String equipmentNotes) {
+        super(id, name, department);
+        this.specialty = specialty;
+        this.equipmentNotes = equipmentNotes;
+    }
+
+    @Override
+    public void printDetails() {
+        System.out.println("Type: Other Health Professional");
+        super.printDetails();
+        System.out.println("  Specialty: " + specialty);
+        System.out.println("  Equipment Notes: " + equipmentNotes);
+    }
 }

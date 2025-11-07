@@ -1,5 +1,24 @@
 public class GeneralPractitioner extends HealthProfessional {
-    // TODO: 添加额外属性 (clinicRoom 或 homeVisit)
-    // TODO: 构造方法（默认 + 全参，调用 super）
-    // TODO: 覆写 printDetails() 打印类型和信息
+    private String clinicRoom;
+    private boolean homeVisitAvailable;
+
+    public GeneralPractitioner() {
+        super();
+        this.clinicRoom = "Unknown";
+        this.homeVisitAvailable = false;
+    }
+
+    public GeneralPractitioner(int id, String name, String department, String clinicRoom, boolean homeVisitAvailable) {
+        super(id, name, department);
+        this.clinicRoom = clinicRoom;
+        this.homeVisitAvailable = homeVisitAvailable;
+    }
+
+    @Override
+    public void printDetails() {
+        System.out.println("Type: General Practitioner");
+        super.printDetails();
+        System.out.println("  Clinic Room: " + clinicRoom);
+        System.out.println("  Home Visit Available: " + (homeVisitAvailable ? "Yes" : "No"));
+    }
 }
