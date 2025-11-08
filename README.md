@@ -1,10 +1,9 @@
 # PROG2004 – Assessment 1: Simple Appointment System
 **Student Name:** Wu Shaowei  
 <<<<<<< HEAD
-**Student ID:** (填写你的ID)  
+**Student ID:** 24832850
 =======
 **Student ID:** 24832850  
->>>>>>> 834169bad1f01aaf2629f43c57cfd3842a722955
 **Project Name:** wushaowei-A1  
 
 ---
