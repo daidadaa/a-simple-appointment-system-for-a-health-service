@@ -1,41 +1,72 @@
-public class AssignmentOne {
-    public static void main(String[] args) {
-        System.out.println("=== Part 3 – Using classes and objects ===");
+# A Simple Appointment System for a Health Service
 
-        // 创建医生和其他健康专业人员对象（带参数构造）
-        GeneralPractitioner gp1 = new GeneralPractitioner(101, "Dr. Alice", "General", "Room 1", true);
-        GeneralPractitioner gp2 = new GeneralPractitioner(102, "Dr. Bob", "General", "Room 2", false);
-        OtherProfessional op1 = new OtherProfessional(201, "Dr. Chen", "Cardiology", "Heart", "ECG Machine");
+**Author:** Wu Shaowei
+**Student ID:** 12345678
+**Unit:** PROG2004 Object Oriented Programming
+**Assessment:** A1 – Appointment System
 
-        // 打印每位健康专业人员的详细信息
-        gp1.printDetails();
-        System.out.println("-------------------");
-        gp2.printDetails();
-        System.out.println("-------------------");
-        op1.printDetails();
-        System.out.println("-------------------");
+---
 
-        // Part 5 – 创建和管理预约
-        System.out.println("=== Part 5 – Collection of appointments ===");
-        AppointmentManager manager = new AppointmentManager();
+## Project Overview
+This project implements a simple appointment system for a health service.
+It demonstrates object-oriented programming concepts such as inheritance, polymorphism, encapsulation, and the use of collections.
 
-        // 创建预约对象
-        Appointment a1 = new Appointment("Alice", "0411111111", "09:00", gp1);
-        Appointment a2 = new Appointment("Bob", "0422222222", "10:00", gp2);
-        Appointment a3 = new Appointment("Chris", "0433333333", "11:00", op1);
+The system allows:
+- Creating health professionals (General Practitioners and Other Specialists)
+- Creating appointments with basic validation (mobile number, time format)
+- Managing appointments with conflict detection and cancellation
+- Printing details of professionals and appointments
 
-        // 添加预约
-        manager.createAppointment(a1);
-        manager.createAppointment(a2);
-        manager.createAppointment(a3);
+---
 
-        // 打印所有预约
-        manager.printExistingAppointments();
+## Project Structure
 
-        // 取消一个预约
-        manager.cancelBooking("0411111111");
+wushaowei-A1/
+├── README.md
+└── src/
+├── AssignmentOne.java
+├── HealthProfessional.java
+├── GeneralPractitioner.java
+├── OtherProfessional.java
+├── Appointment.java
+└── AppointmentManager.java
 
-        // 打印剩余预约
-        manager.printExistingAppointments();
-    }
-}
+yaml
+复制代码
+
+---
+
+## Compilation & Run Instructions
+
+1. Open a terminal in the project root (`wushaowei-A1`)
+2. Compile all Java files into the `bin` directory:
+
+```bash
+javac -d bin src/*.java
+Run the main program:
+
+bash
+复制代码
+java -cp bin AssignmentOne
+You should see output for Part 3 (health professionals) and Part 5 (appointments).
+
+Mapping to Assessment Rubric
+Part	Description	Files
+Part 1–2 (25%)	HealthProfessional base class and GP/OtherProfessional subclasses	HealthProfessional.java, GeneralPractitioner.java, OtherProfessional.java
+Part 3 (10%)	Demonstration of creating health professionals and printing their details	AssignmentOne.java
+Part 4 (20%)	Appointment class with patient info, mobile validation, time format validation	Appointment.java
+Part 5 (25%)	AppointmentManager with create, print, cancel, and conflict detection	AppointmentManager.java
+Accuracy & Validations (7.5%)	Mobile & time validation, doctor conflict detection	Appointment.java, AppointmentManager.java
+Concept Understanding (12.5%)	OOP concepts, collections, encapsulation, polymorphism	All files, main demo in AssignmentOne.java
+
+Gitee Repository
+Gitee Repository Link
+
+Video Demonstration Link
+Video Link
+
+GenAI Usage Declaration
+I acknowledge that I used OpenAI ChatGPT to assist in writing and polishing Java code for this assignment, within the parameters outlined in the Assessment Brief.
+
+yaml
+复制代码

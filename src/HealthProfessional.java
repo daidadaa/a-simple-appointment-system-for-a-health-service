@@ -1,7 +1,4 @@
-/**
- * HealthProfessional.java
- * Base class representing a health professional.
- */
+
 public class HealthProfessional {
     private int id;
     private String name;
@@ -53,6 +50,7 @@ public class HealthProfessional {
         this.department = department.trim();
     }
 
+
     // 打印详情方法
     public void printDetails() {
         System.out.println("The health professional details are:");
@@ -60,4 +58,7 @@ public class HealthProfessional {
         System.out.println("  Name: " + name);
         System.out.println("  Department: " + department);
     }
+    public String getTypeLabel() {
+    return "Health Professional";
+}
 }

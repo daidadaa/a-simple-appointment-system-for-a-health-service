@@ -1,24 +1,24 @@
+
 public class OtherProfessional extends HealthProfessional {
     private String specialty;
-    private String equipmentNotes;
 
     public OtherProfessional() {
         super();
-        this.specialty = "Unknown";
-        this.equipmentNotes = "None";
+        this.specialty = "Specialty";
     }
 
-    public OtherProfessional(int id, String name, String department, String specialty, String equipmentNotes) {
+    public OtherProfessional(int id, String name, String department, String specialty) {
         super(id, name, department);
         this.specialty = specialty;
-        this.equipmentNotes = equipmentNotes;
     }
+
+    public String getSpecialty() { return specialty; }
+    public void setSpecialty(String specialty) { this.specialty = specialty; }
 
     @Override
     public void printDetails() {
-        System.out.println("Type: Other Health Professional");
+        System.out.println("Type: " + specialty);
         super.printDetails();
         System.out.println("  Specialty: " + specialty);
-        System.out.println("  Equipment Notes: " + equipmentNotes);
     }
 }
