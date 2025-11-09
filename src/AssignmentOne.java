@@ -1,15 +1,12 @@
 import java.util.Scanner;
 
 /**
- * AssignmentOne
- * - First: automatic demo for Part 3 & Part 5 (suitable for marker to inspect)
- * - Then: optional interactive menu for live testing (Scanner)
- *
- * Names and sample data use simple English names (Alice, Bob, Carol, David, Emma, etc.)
+ * Main program for the appointment system.
+ * Demonstrates creation, conflict handling, and interactive menu.
  */
 public class AssignmentOne {
 
-    // Utility to run the demo (non-interactive) required by assessment
+    /** Demo: create sample appointments */
     private static void runDemo(AppointmentManager manager,
                                 GeneralPractitioner gp1,
                                 GeneralPractitioner gp2,
@@ -26,16 +23,16 @@ public class AssignmentOne {
         System.out.println("------------------------------");
         System.out.println("=== Part 5 – Collection of appointments ===");
 
-        // Create valid appointments (demonstrates use)
+        // Create valid appointments
         manager.createAppointment("Alice", "0411111111", "09:00", gp1);
         manager.createAppointment("Ben",   "0411111112", "09:30", gp2);
         manager.createAppointment("Carol", "0411111113", "10:00", gp3);
         manager.createAppointment("David", "0411111114", "10:30", sp1);
         manager.createAppointment("Emma",  "0411111115", "11:00", sp2);
 
-        // Invalid / conflict examples (demonstration)
+        // Invalid / conflict examples
         manager.createAppointment("Frank", "0412ABCD", "11:30", gp1);       // invalid mobile
-        manager.createAppointment("George", "0411111111", "09:00", gp1);    // conflict: same doctor & time (Alice uses 09:00)
+        manager.createAppointment("George", "0411111111", "09:00", gp1);    // conflict: same doctor & time
 
         System.out.println("\n-- Print existing appointments --");
         manager.printExistingAppointments();
@@ -49,7 +46,7 @@ public class AssignmentOne {
         System.out.println("------------------------------");
     }
 
-    // Interactive menu for extra demonstration (optional)
+    /** Interactive menu for manual appointment management */
     private static void interactiveMenu(AppointmentManager manager,
                                         GeneralPractitioner gp1,
                                         GeneralPractitioner gp2,
@@ -66,13 +63,8 @@ public class AssignmentOne {
             System.out.println("0. Exit");
             System.out.print("Enter choice: ");
 
-            // safe-read int
-            while (!sc.hasNextInt()) {
-                System.out.print("Please enter a number: ");
-                sc.next();
-            }
-            choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            while (!sc.hasNextInt()) { System.out.print("Please enter a number: "); sc.next(); }
+            choice = sc.nextInt(); sc.nextLine();
 
             switch (choice) {
                 case 1:
@@ -84,19 +76,14 @@ public class AssignmentOne {
                     String time = sc.nextLine().trim();
 
                     System.out.println("Select doctor:");
-                    System.out.println("  1) " + gp1.getName() + " (" + gp1.getClass().getSimpleName() + ")");
-                    System.out.println("  2) " + gp2.getName() + " (" + gp2.getClass().getSimpleName() + ")");
-                    System.out.println("  3) " + gp3.getName() + " (" + gp3.getClass().getSimpleName() + ")");
-                    System.out.println("  4) " + sp1.getName() + " (" + sp1.getClass().getSimpleName() + ")");
-                    System.out.println("  5) " + sp2.getName() + " (" + sp2.getClass().getSimpleName() + ")");
+                    System.out.println("  1) " + gp1.getName());
+                    System.out.println("  2) " + gp2.getName());
+                    System.out.println("  3) " + gp3.getName());
+                    System.out.println("  4) " + sp1.getName());
+                    System.out.println("  5) " + sp2.getName());
                     System.out.print("Choose (1-5): ");
-                    int docChoice = -1;
-                    while (!sc.hasNextInt()) {
-                        System.out.print("Please enter a number 1-5: ");
-                        sc.next();
-                    }
-                    docChoice = sc.nextInt();
-                    sc.nextLine(); // consume newline
+                    while (!sc.hasNextInt()) { System.out.print("Please enter a number 1-5: "); sc.next(); }
+                    int docChoice = sc.nextInt(); sc.nextLine();
 
                     HealthProfessional selected;
                     switch (docChoice) {
@@ -109,9 +96,7 @@ public class AssignmentOne {
                             System.out.println("Invalid doctor choice. Aborting appointment creation.");
                             selected = null;
                     }
-                    if (selected != null) {
-                        manager.createAppointment(name, mobile, time, selected);
-                    }
+                    if (selected != null) manager.createAppointment(name, mobile, time, selected);
                     break;
 
                 case 2:
@@ -135,8 +120,9 @@ public class AssignmentOne {
         sc.close();
     }
 
+    /** Main method */
     public static void main(String[] args) {
-        // create doctors with simple English names
+        // Create doctors
         GeneralPractitioner gp1 = new GeneralPractitioner(101, "Dr. Alice", "General Medicine", "Room 1", true);
         GeneralPractitioner gp2 = new GeneralPractitioner(102, "Dr. Bob", "General Medicine", "Room 2", false);
         GeneralPractitioner gp3 = new GeneralPractitioner(103, "Dr. Carol", "General Medicine", "Room 3", true);
@@ -146,10 +132,10 @@ public class AssignmentOne {
 
         AppointmentManager manager = new AppointmentManager();
 
-        // 1) Run deterministic demo for marker (Part3 + Part5)
+        // 1) Deterministic demo for marker
         runDemo(manager, gp1, gp2, gp3, sp1, sp2);
 
-        // 2) Enter interactive menu for extra demonstration
+        // 2) Optional interactive menu
         System.out.println("\nDemo finished. Now entering interactive menu (optional).");
         interactiveMenu(manager, gp1, gp2, gp3, sp1, sp2);
 
